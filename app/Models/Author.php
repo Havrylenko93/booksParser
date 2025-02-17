@@ -12,11 +12,31 @@ class Author extends Model
         'full_name',
     ];
 
+    /** @var string[]  */
+    protected $appends = [
+        'books_count',
+    ];
+
+    /** @var string[]  */
+    protected $hidden = [
+        'pivot',
+        'created_at',
+        'updated_at',
+    ];
+
     /**
      * @return BelongsToMany
      */
     public function books(): BelongsToMany
     {
         return $this->belongsToMany(Book::class, 'books_authors');
+    }
+
+    /**
+     * @return int
+     */
+    public function getBooksCountAttribute(): int
+    {
+        return $this->books()->count();
     }
 }

@@ -19,6 +19,11 @@ class Book extends Model
         'status',
     ];
 
+    /** @var string[]  */
+    protected $hidden = [
+        'pivot'
+    ];
+
     /**
      * @return BelongsToMany
      */

@@ -12,6 +12,11 @@ class Category extends Model
         'name',
     ];
 
+    /** @var string[]  */
+    protected $hidden = [
+        'pivot'
+    ];
+
     /**
      * @return BelongsToMany
      */
